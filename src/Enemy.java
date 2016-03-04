@@ -32,7 +32,7 @@ public class Enemy
 		z = zz;
 		x2 = xx + 5;
 		z2 = zz + 5;
-		mHP = h + 40*Math.sqrt(wave);
+		mHP = h + 40*(wave);
 		hp = mHP;
 		speed = s + .2*Math.sqrt(wave);
 		level = wave;
@@ -70,14 +70,28 @@ public class Enemy
 		{
 			gl.glMaterialfv(GL.GL_FRONT_AND_BACK, GL.GL_SPECULAR, new float[4], 0);
 			
-			gl.glLineWidth(10);
-			gl.glBegin(GL.GL_LINES);
+			gl.glBegin(GL.GL_QUADS);
 				gl.glColor3d(1,0,0);
 				gl.glVertex3d(x-4, 5, z);
+				gl.glVertex3d(x-4, 8, z);
 				gl.glColor3d(1*((mHP-hp)/mHP),1*(hp/mHP),0);
+				gl.glVertex3d(x-4+8*(hp/mHP), 8, z);
 				gl.glVertex3d(x-4+8*(hp/mHP), 5, z);
 			gl.glEnd();
-			gl.glLineWidth(1);
+			gl.glBegin(GL.GL_LINES);
+				gl.glColor3d(0, 0, 0);
+				gl.glVertex3d(x-4, 5, z);
+				gl.glVertex3d(x-4, 8, z);
+				
+				gl.glVertex3d(x-4, 8, z);
+				gl.glVertex3d(x-4+8, 8, z);
+				
+				gl.glVertex3d(x-4+8, 8, z);
+				gl.glVertex3d(x-4+8, 5, z);
+				
+				gl.glVertex3d(x-4+8, 5, z);
+				gl.glVertex3d(x-4, 5, z);
+			gl.glEnd();
 			damagedRecently --;
 			
 			gl.glMaterialfv(GL.GL_FRONT_AND_BACK, GL.GL_SPECULAR, new float[]{.5f, .5f, .5f, 1}, 0);

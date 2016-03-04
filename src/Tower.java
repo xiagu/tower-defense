@@ -524,7 +524,8 @@ public class Tower
 
 					for(int j = 0; j < 4; j ++)
 					{	
-						int[] newXS = Arrays.copyOf(xs, xs.length);
+						int[] newXS = new int[xs.length];
+						System.arraycopy(xs, 0, newXS, 0, xs.length);
 
 						xs[j] = (int)(Math.cos(i)*(xs[j]-xLoc) - Math.sin(i)*(zs[j]-zLoc)) + xLoc;
 						zs[j] = (int)(Math.sin(i)*(newXS[j]-xLoc) + Math.cos(i)*(zs[j]-zLoc)) + zLoc;
@@ -569,7 +570,8 @@ public class Tower
 						most = hit;
 						//bestAngle = i;
 						//bestEnemiesHit = Arrays.copyOf(enemiesHit, 0);
-						bestEnemiesHit = Arrays.copyOf(enemiesHit, enemiesHit.length);
+			//			bestEnemiesHit = Arrays.copyOf(enemiesHit, enemiesHit.length);
+						System.arraycopy(enemiesHit, 0, bestEnemiesHit, 0, enemiesHit.length);
 						
 						if(hit == prevHit)
 						{							

@@ -86,7 +86,6 @@ public class World extends JFrame
 	public Image upgrade = Toolkit.getDefaultToolkit().createImage("upgrade.png");
 	public Image sell = Toolkit.getDefaultToolkit().createImage("sell.png");
 	public Image range = Toolkit.getDefaultToolkit().createImage("range.png");
-//	public Image background = Toolkit.getDefaultTooklit().createImage("background.png");
 	public Image background = Toolkit.getDefaultToolkit().createImage("background.png");
 	
 	public static int[] enemiesMade, enemyCounter;
@@ -1195,7 +1194,9 @@ public class World extends JFrame
 		screen.add(canvas);
 		screen.add(panel);
 		
-		canvas.addKeyListener(new Listener());
+		Listener tempKeyListener = new Listener();
+		
+		canvas.addKeyListener(tempKeyListener);
 		canvas.addMouseListener(new Listener());
 	//	canvas.addMouseMotionListener(new Listener());
 		canvas.addMouseWheelListener(new Listener());
@@ -1203,6 +1204,7 @@ public class World extends JFrame
 		
 		panel.addMouseListener(new Listener());
 		panel.addMouseMotionListener(new Listener());
+		panel.addKeyListener(tempKeyListener);
 		
 		pack();
 		isPlaying = true;
