@@ -70,8 +70,8 @@ public class World extends JFrame
 	
 	public boolean continueBuilding = false;
 	public boolean buildingTowers = false;
-	public Type towerType;
-	public Type displayInfo;
+	public TowerType towerType;
+	public TowerType displayInfo;
 	public boolean displayUpgradeInfo = false;
 	public boolean displaySellInfo = false;
 	public boolean displayRange = false;
@@ -289,13 +289,13 @@ public class World extends JFrame
 				
 				buffer.drawImage(mgun, 40, 105, null);
 				buffer.draw3DRect(39,104, 31,31, true);
-				if(towerType == Type.MGUN)
+				if(towerType == TowerType.MGUN)
 				{
 					buffer.setColor(selected);
 					buffer.fillRect(39, 104, 31, 31);
 					buffer.setColor(Color.white);
 				}
-				if(munnies < Type.MGUN.getCost())
+				if(munnies < TowerType.MGUN.getCost())
 				{
 					buffer.setColor(gray);
 					buffer.fillRect(39, 104, 31, 31);
@@ -304,14 +304,14 @@ public class World extends JFrame
 				
 				buffer.drawImage(missile, 75, 105, null);
 				buffer.draw3DRect(74,104, 31,31, true);
-				if(towerType == Type.MISSILE)
+				if(towerType == TowerType.MISSILE)
 				{
 					buffer.setColor(selected);
 					buffer.fillRect(74, 104, 31, 31);
 					buffer.setColor(Color.white);
 				}
 				
-				if(munnies < Type.MISSILE.getCost())
+				if(munnies < TowerType.MISSILE.getCost())
 				{
 					buffer.setColor(gray);
 					buffer.fillRect(74, 104, 31, 31);
@@ -320,13 +320,13 @@ public class World extends JFrame
 				
 				buffer.drawImage(laser, 110, 105, null);
 				buffer.draw3DRect(109,104, 31,31, true);
-				if(towerType == Type.LASER)
+				if(towerType == TowerType.LASER)
 				{
 					buffer.setColor(selected);
 					buffer.fillRect(109, 104, 31, 31);
 					buffer.setColor(Color.white);
 				}
-				if(munnies < Type.LASER.getCost())
+				if(munnies < TowerType.LASER.getCost())
 				{
 					buffer.setColor(gray);
 					buffer.fillRect(109, 104, 31, 31);
@@ -896,7 +896,7 @@ public class World extends JFrame
 
 		}
 
-		public void keyTyped(KeyEvent evt)
+		public void keyTowerTyped(KeyEvent evt)
 		{
 	/*		int myKey = evt.getKeyCode();
 			
@@ -946,19 +946,19 @@ public class World extends JFrame
 						if(mouseX >= 40 && mouseX <= 70)
 							if(mouseY >= 105 && mouseY <= 135)
 							{	buildingTowers = true;
-								towerType = Type.MGUN;
+								towerType = TowerType.MGUN;
 							}
 						
 						if(mouseX >= 75 && mouseX <= 105)
 							if(mouseY >= 105 && mouseY <= 135)
 							{	buildingTowers = true;
-								towerType = Type.MISSILE;
+								towerType = TowerType.MISSILE;
 							}
 						
 						if(mouseX >= 110 && mouseX <= 140)
 							if(mouseY >= 105 && mouseY <= 135)
 							{	buildingTowers = true;
-								towerType = Type.LASER;
+								towerType = TowerType.LASER;
 							}
 						
 						if(mouseX >= 19 && mouseX <= 175)
@@ -1039,21 +1039,21 @@ public class World extends JFrame
 			{
 				if(mouseY >= 105 && mouseY <= 135)
 				{
-					displayInfo = Type.MGUN;
+					displayInfo = TowerType.MGUN;
 				}
 			}
 			else if(mouseX >= 75 && mouseX <= 105)
 			{
 				if(mouseY >= 105 && mouseY <= 135)
 				{
-					displayInfo = Type.MISSILE;
+					displayInfo = TowerType.MISSILE;
 				}
 			}
 			else if(mouseX >= 110 && mouseX <= 140)
 			{
 				if(mouseY >= 105 && mouseY <= 135)
 				{
-					displayInfo = Type.LASER;
+					displayInfo = TowerType.LASER;
 				}
 			}
 			else displayInfo = null;
@@ -1098,6 +1098,9 @@ public class World extends JFrame
 			// System.out.println("repainting menu");
 			menu.repaint();
 		}
+
+		@Override
+		public void keyTyped(KeyEvent arg0) { }
 	}
 	
 	public void drawText(Graphics g, String str, int x, int y, int size, double xTrail, double yTrail)

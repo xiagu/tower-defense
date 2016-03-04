@@ -1,5 +1,5 @@
 
-public enum Type
+public enum TowerType
 {
 	MGUN	(75, 1, 0, 0, 40, "Machine Gun Turret"),
 	MISSILE	(50, 15, 10, 20, 60, "Missile Turret"),
@@ -15,7 +15,7 @@ public enum Type
 	private int cooldown, cost;
 	private String name;
 	
-	private Type(double range, double damage, double splash, int cooldown, int cost, String name)
+	private TowerType(double range, double damage, double splash, int cooldown, int cost, String name)
 	{
 		this.range = range;
 		this.damage = damage;

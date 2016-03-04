@@ -20,14 +20,14 @@ public class Tower
 	public static final int[] STAT_COOLDOWN_L1 = {0, 10, 25},
 							  COST = {25,40,200};*/
 	
-	public Type type;
+	public TowerType type;
 	public int xLoc, zLoc, name, fireCounter = 0, level = 1;
 	public int height = 15;
 	public double range, damage, splash, cooldown, upgradeCost, sellCost, moneyPaid;
 	
 	public Enemy target;
 	
-	public Tower(Type type, int x, int z)
+	public Tower(TowerType type, int x, int z)
 	{
 		this.type = type;
 		this.xLoc = x;
@@ -422,7 +422,7 @@ public class Tower
 		
 		if(fireCounter > cooldown)
 		{	
-			if(type != Type.LASER)
+			if(type != TowerType.LASER)
 			{
 			/* if(target != null) */ fireCounter = 0;
 				
